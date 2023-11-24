@@ -40,9 +40,8 @@ export const login= bigPromise(async(req,res,next)=>{
         message:"No user exist with the given email"
         });
     }
-    else{
-        const user1=await user.isValidatedPassword(req.body.password,user.password);  
-        if(!user1)
+    else{  
+        if(user.password != password)
         {
             return res.status(401).json({
                 success:false,
